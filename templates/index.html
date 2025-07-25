@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FB Account Generator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: Arial; padding: 40px; background: #f2f2f2; }
+    .container { background: white; padding: 20px; border-radius: 8px; max-width: 600px; margin: auto; }
+    button { padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 5px; }
+    .output { margin-top: 20px; }
+    pre { background: #eee; padding: 10px; border-radius: 5px; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Facebook Account Generator By Faheem Akhtar</h2>
+    <form method="post">
+      <button type="submit">Generate Account</button>
+    </form>
+    {% if result %}
+      <div class="output">
+        {% if result.error %}
+          <p style="color:red;">{{ result.error }}</p>
+        {% else %}
+          <h4>Generated Info:</h4>
+          <pre>
+Email    : {{ result.email }}
+Password : {{ result.password }}
+Name     : {{ result.name }}
+Birthday : {{ result.birthday }}
+Token    : {{ result.response.session_info.access_token if result.response.session_info else 'Token Not Returned' }}
+          </pre>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>
