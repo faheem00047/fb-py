@@ -65,7 +65,7 @@ def index():
             "birthday": birthday.strftime('%Y-%m-%d'),
             "response": fb_response
         }
-    return render_template("index.html", result=result)
+    return ("index.html", result=result)
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=5000)
